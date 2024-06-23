@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary"> <!--class="navbar navbar-expand-lg navbar-dark bg-dark"-->
+    <div class="container-fluid">
+        <a class="navbar-brand" href="./homepage.html">
+            <img src="./images/brewstock.png" alt="BrewStocks Logo" height="30" class="d-inline-block align-text-top">
+            BrewStocks
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            	<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./landing.html"><i class="fa fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="howto.html"><i class="fa fa-question"></i> How to Use</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./homepage.html"><i class="fa fa-line-chart"></i> Start Trading</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="predict.html"><i class="fa fa-magic"></i> Predict</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./about.html"><i class="fa fa-users"></i> About Us</a>
+                    </li>
+        	</ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+	    <button id="logout" href="./index.html" class="btn btn-outline-success"><i class="fa fa-sign-out"></i>  Logout</button>
+    </div>
+</nav>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>About Me</h2>
+                <p>Hello! I'm a passionate developer who loves creating innovative solutions to real-world problems. With a background in Computer Science and Finance, I strive to develop clean, efficient, and user-friendly applications.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="./images/me.png" alt="Developer" style="width:300px;height;300px" class="img-fluid rounded-circle">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="bg-light py-5">
+    <div class="container">
+        <h2>Skills</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Front-end Development</h3>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Bootstrap</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Back-end Development</h3>
+                <ul>
+                    <li>Firebase</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Other Skills</h3>
+                <ul>
+                    <li>Git</li>
+                    <li>API Integration</li>
+                    <li>Responsive Design</li>
+                    <li>Problem Solving</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-5">
+    <div class="container">
+        <h2>Projects</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/EatSt.png" alt="Project 1" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 1- EatSt.</h5>
+                        <p class="card-text">An Android based Food Ordering and Delivery App. Made using Android Studio and Google Firebase for database operations</p>
+                        <a href="https://github.com/Ayon-exe?tab=repositories" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/RegalHaven.png" alt="Project 2" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 2- RegalHaven</h5>
+                        <p class="card-text">A Banking Application built using C# .NET Framework. Used SQL for Database Operations.</p>
+                        <a href="https://github.com/Ayon-exe?tab=repositories" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/brewstock.png" alt="Project 3" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 3- BrewStock</h5>
+                        <p class="card-text">A stock trading website built using HTML, Javascript and CSS. Using Google Firebase for database operations along with Tensorflow.js for Deep Learning and Prediction operations.</p>
+                        <a href="https://github.com/Ayon-exe/StockTrade" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="bg-light py-5">
+    <div class="container">
+        <h2>Contact Me</h2>
+        <p>If you're interested in working together or just want to say hi, feel free to reach out!</p>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+const firebaseConfig = {
+    apiKey: "AIzaSyD4wlA68qZp41M_CfUf1j93oYn41CoN5eo",
+    authDomain: "stocktrade-173c8.firebaseapp.com",
+    databaseURL: "https://stocktrade-173c8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "stocktrade-173c8",
+    storageBucket: "stocktrade-173c8.appspot.com",
+    messagingSenderId: "58004670302",
+    appId: "1:58004670302:web:e942b65ba9ccdaec9d71cf",
+    measurementId: "G-BJTP6ZD69S"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+
+logout.addEventListener('click',(e) => {
+    signOut(auth).then(() => {
+        alert('user Signed out');
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+    });
+    window.location.replace("https://ayon-exe.github.io/StockTrade/index.html");
+});
+</script>
+</body>
+</html>

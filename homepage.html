@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    	<title>BrewStocks</title>
+    	<link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    	<link rel="stylesheet" href="style.css">
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+	 <a class="navbar-brand" href="./homepage.html">
+            <img src="./images/brewstock.png" alt="BrewStocks Logo" height="30" class="d-inline-block align-text-top">
+            BrewStocks
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		<li class="nav-item">
+                    <a class="nav-link active" href="./landing.html"><i class="fa fa-home"></i>  Home</a>
+                </li>
+		<li class="nav-item">
+                    <a class="nav-link active" href="howto.html"><i class="fa fa-question"></i>  How to Use</a>
+                </li>
+		<li class="nav-item">
+                    <a class="nav-link active" href="./homepage.html"><i class="fa fa-line-chart"></i>  Start Trading</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="predict.html"><i class="fa fa-magic"></i>  Predict</a>
+                </li>
+		<li class="nav-item">
+                    <a class="nav-link active" href="./about.html"><i class="fa fa-users"></i>  About Us</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+	    <button id="logout" href="./index.html" class="btn btn-outline-success"><i class="fa fa-sign-out"></i>  Logout</button>
+    </div>
+</nav>
+<marquee>
+    Sensex Today | Market Close Highlights : Sensex ends up 335pts, Nifty over 22,140; Oil & Gas, Metal, IT, top gainers ||
+    An $80 billion crash in smallcaps flashes warning signs|| 
+    Railway stocks bounce back; IRFC, Railtel, RVNL, others surge up to 11%||
+    Adani Green Energy zooms 7% on subsidiary's power purchase deal with SECI|| 
+    Paytm extends losses, falls 3% ahead of payments bank March 15 deadline
+</marquee>
+	
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+		<div class="tradingview-widget-container">
+		  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+		  {
+		  "symbols": [
+		    ["NASDAQ:AAPL|ALL|USD"],
+		    ["NASDAQ:GOOGL|ALL|USD"],
+		    ["NASDAQ:MSFT|ALL|USD"],
+		    ["NASDAQ:META|ALL|USD"],
+		    ["NASDAQ:AMZN|ALL|USD"]
+		  ],
+		  "chartOnly": false,
+		  "width": 800,
+		  "height": 400,
+		  "locale": "en",
+		  "colorTheme": "light",
+		  "autosize": true,
+		  "showVolume": false,
+		  "showMA": false,
+		  "hideDateRanges": false,
+		  "hideMarketStatus": false,
+		  "hideSymbolLogo": false,
+		  "scalePosition": "right",
+		  "scaleMode": "Normal",
+		  "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+		  "fontSize": "10",
+		  "noTimeScale": false,
+		  "valuesTracking": "1",
+		  "changeMode": "price-and-percent",
+		  "chartType": "area",
+		  "lineWidth": 2,
+		  "lineType": 0,
+		  "dateRanges": ["1d|1","1m|30","3m|60","12m|1D","60m|1W","all|1M"],
+		  "timeHoursFormat": "12-hours"
+		}
+		  </script>
+		</div>
+        </div>
+        <div class="col-md-4">
+            <a href="./account.html">
+                <button id="account" class="btn btn-primary" style="float: right;"><i class="fa fa-user-circle"></i>  Account</button>
+            </a>
+        </div>
+    </div>
+    <div>
+    	<h3 id="greet"></h3>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="">Wallet</span>
+            <input id="wallet" type="text" size=16 value="0">	
+            <button id="refresh" class="btn btn-outline-success"><i class="fa fa-refresh"></i>  Refresh</button>
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="">Current Price</span>
+            <input id="currprice" type="text" size=10 value="0" readonly>
+            <select name="company" class="btn btn-dark dropdown-toggle" id="company" onChange="combo(this);">
+                <option value="AAPL">Apple</option>
+                <option value="GOOG">Google</option>
+                <option value="MSFT">Microsoft</option>
+                <option value="META">FaceBook</option>
+                <option value="AMZN">Amazon</option>
+            </select>
+        </div>
+	<script type="text/javascript">
+		function combo(t) {
+			//actual Alpha Vantage API key
+			const apiKey = 'YOUR_API_KEY';
+			// Get the stock symbol from the input element
+			const stockSymbol = t.value;
+			// Make an HTTP request to the Alpha Vantage API with the dynamic stock symbol
+			fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${apiKey}`)
+			.then(response => response.json())
+			.then(data => {
+			        // Check if the API response contains the expected data
+			        if (data && data['Global Quote']) {
+			        // Extract the stock price from the API response
+			        const stockPrice = data['Global Quote']['05. price'];
+			        // Display the stock price
+				document.getElementById('currprice').value = stockPrice;
+			        } else {
+			        // Handle the case where the API response doesn't contain the expected data
+			        console.log('Error: Invalid API response');
+			        }
+			})
+			.catch(error => {
+			// Handle any errors that occur during the API request
+			console.log('Error fetching stock price:', error);
+			});
+		}
+	</script>
+        <br><br>
+        <button id="buyplus" class="btn btn-dark"><i class="fa fa-plus"></i></button>
+	<input id="buyamount" size="4" value="1">
+	<button id="buyminus" class="btn btn-dark"><i class="fa fa-minus"></i></button>
+	<button id="buy" class="btn btn-success">Buy</button> 
+        <br><br>
+        <button id="sellplus" class="btn btn-dark"><i class="fa fa-plus"></i></button>
+	<input id="sellamount" size="4" value="1">
+	<button id="sellminus" class="btn btn-dark"><i class="fa fa-minus"></i></button>
+	<button id="sell" class="btn btn-danger">Sell</button>
+    </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getDatabase, get, set, ref, update, onValue, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyD4wlA68qZp41M_CfUf1j93oYn41CoN5eo",
+    authDomain: "stocktrade-173c8.firebaseapp.com",
+    databaseURL: "https://stocktrade-173c8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "stocktrade-173c8",
+    storageBucket: "stocktrade-173c8.appspot.com",
+    messagingSenderId: "58004670302",
+    appId: "1:58004670302:web:e942b65ba9ccdaec9d71cf",
+    measurementId: "G-BJTP6ZD69S"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const database = getDatabase(app);
+var uid = 0;
+var walletRef;
+var greetRef;
+var greetings;
+var chart;
+
+ window.onload = function () {
+	 
+    }
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        uid = user.uid;
+        walletRef = ref(database, 'users/' + uid + '/wallet');
+        greetRef = ref(database, 'users/' + uid + '/username');
+        greeting();
+        updatewallet();
+    }
+});
+	
+function updatewallet() {
+    onValue(walletRef, (snapshot) => {
+        const walletData = snapshot.val();
+        document.getElementById('wallet').value = walletData;
+    });
+}
+
+function greeting() {
+    onValue(greetRef, (snapshot) => {
+        const greetData = snapshot.val();
+        const date = new Date();
+        const hour = date.getHours();
+        if (hour < 12) {
+            greetings = "Good Morning!";
+        } else if (hour < 18) {
+            greetings = "Good Afternoon!";
+        } else {
+            greetings = "Good Evening!";
+        }
+        document.getElementById('greet').innerText = greetings + ' ' + greetData;
+    });
+}
+
+refresh.addEventListener('click',(e) => {
+	updatewallet();
+});
+
+buy.addEventListener('click', (e) => {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Update the wallet data in Firebase
+            get(walletRef).then((snapshot) => {
+                const currentWallet = snapshot.val();
+                var buyAmount= document.getElementById("buyamount").value;
+                const updatedWallet = currentWallet - (parseFloat(document.getElementById("currprice").value) * buyAmount);
+                set(walletRef, updatedWallet);
+                // Record the buy transaction
+                recordTransaction('buy', buyAmount, parseFloat(document.getElementById("currprice").value), document.getElementById("company").value);
+            });
+        }
+    });
+});
+
+sell.addEventListener('click', (e) => {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Update the wallet data in Firebase
+            get(walletRef).then((snapshot) => {
+                const currentWallet = snapshot.val();
+                var sellAmount= document.getElementById("sellamount").value;
+                const updatedWallet = currentWallet + (parseFloat(document.getElementById("currprice").value) * sellAmount);
+                set(walletRef, updatedWallet);
+
+                // Record the sell transaction
+                recordTransaction('sell', sellAmount, parseFloat(document.getElementById("currprice").value), document.getElementById("company").value);
+            });
+        }
+    });
+});
+
+
+buyplus.addEventListener('click',(e) => {
+    document.getElementById("buyamount").value = (parseInt(document.getElementById("buyamount").value))+1;
+});
+buyminus.addEventListener('click',(e) => {
+	if ((document.getElementById("buyamount").value) > 1)
+	{document.getElementById("buyamount").value = (parseInt(document.getElementById("buyamount").value))-1;}
+	else
+	{alert("amount cant be 0 or negative");}
+});
+sellplus.addEventListener('click',(e) => {
+	document.getElementById("sellamount").value = (parseInt(document.getElementById("sellamount").value))+1;
+});
+sellminus.addEventListener('click',(e) => {
+	if ((document.getElementById("sellamount").value) > 1)
+	{document.getElementById("sellamount").value = (parseInt(document.getElementById("sellamount").value))-1;}
+	else
+		{alert("amount cant be 0 or negative");}
+});
+
+function recordTransaction(type, amount, price, stockSymbol) {
+    const transactionRef = ref(database, 'users/' + uid + '/transactions');
+    const newTransactionRef = push(transactionRef); // Create a new child node
+    const timestamp = new Date().toISOString().split('T')[0]; // Get current date in 'YYYY-MM-DD' format
+    
+    // Set transaction data
+    set(newTransactionRef, {
+        type: type,
+        stockSymbol: stockSymbol,
+        amount: amount,
+        price: price,
+        timestamp: timestamp
+    })
+    .catch((error) => {
+        console.error('Error recording transaction:', error);
+    });
+}
+
+logout.addEventListener('click',(e) => {
+    signOut(auth).then(() => {
+        alert('user Signed out');
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+    });
+    window.location.replace("https://ayon-exe.github.io/StockTrade/index.html");
+});
+</script>
+
+</body>
+</html>
