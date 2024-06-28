@@ -1,74 +1,70 @@
+<!DOCTYPE html>
 <html>
-	<title>Lims</title>
-	<link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-	<link rel="stylesheet" href="indexstyle.css">
-<style>
-
-</style>
+<head>
+    <title>Lims</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="indexstyle.css">
+</head>
 <body>
 <div class="container" id="container">
-        <div class="form-container sign-up">
-            <div id="demo">
-                <h1>Create Account</h1>
-                <div class="social-icons">
-                    <a href="https://www.google.com/" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://github.com/" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.linkedin.com/feed/" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your email for registeration</span>
-                <input id="email" type="email" placeholder="Email">
-				<input id="username" type="text" placeholder="Username">
-				<input id="password" type="password" placeholder="Password">
-                <input id="signup" type="submit" style="background-color: #512da8;color: white" value="Register">
+    <div class="form-container sign-up">
+        <div id="demo">
+            <h1>Create Account</h1>
+            <div class="social-icons">
+                <a href="https://www.google.com/" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://github.com/" class="icon"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/feed/" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
+            <span>or use your email for registration</span>
+            <input id="email" type="email" placeholder="Email">
+            <input id="username" type="text" placeholder="Username">
+            <input id="password" type="password" placeholder="Password">
+            <input id="signup" type="submit" style="background-color: #512da8; color: white" value="Register">
         </div>
-        <div class="form-container sign-in">
-            <div id="demo">
-                <h1>Sign In</h1>
-                <div class="social-icons">
-                    <a href="https://www.google.com/" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://github.com/" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.linkedin.com/feed/" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your email password</span>
-                <input id="logemail" type="email" placeholder="Email">
-                <input id="logpassword" type="password" placeholder="Password">
-                <a href="#">Forget Your Password?</a>
-                <input id="login" type="submit" style="background-color: #512da8;color: white" value="Login">
+    </div>
+    <div class="form-container sign-in">
+        <div id="demo">
+            <h1>Sign In</h1>
+            <div class="social-icons">
+                <a href="https://www.google.com/" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://github.com/" class="icon"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/feed/" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
+            <span>or use your email password</span>
+            <input id="logemail" type="email" placeholder="Email">
+            <input id="logpassword" type="password" placeholder="Password">
+            <a href="#">Forget Your Password?</a>
+            <input id="login" type="submit" style="background-color: #512da8; color: white" value="Login">
         </div>
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <h1>Welcome Back!</h1>
-                    <p>Enter your personal details to use all of site features</p>
-                    <button class="hidden" id="log">Sign In</button>
-                </div>
-                <div class="toggle-panel toggle-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Register with your personal details to use all of site features</p>
-                    <button class="hidden" id="register">Sign Up</button>
-                </div>
+    </div>
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h1>Welcome Back!</h1>
+                <p>Enter your personal details to use all of site features</p>
+                <button class="hidden" id="log">Sign In</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1>Hello, Friend!</h1>
+                <p>Register with your personal details to use all of site features</p>
+                <button class="hidden" id="register">Sign Up</button>
             </div>
         </div>
     </div>
+</div>
+
 <script type="module">
-  // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
   const firebaseConfig = {
-apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
+    apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
     authDomain: "lims-48c6d.firebaseapp.com",
     databaseURL: "https://lims-48c6d-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "lims-48c6d",
@@ -77,83 +73,81 @@ apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
     appId: "1:421362597347:web:fd370a3e5540da7b5f34d6"
   };
 
-  // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const auth = getAuth();
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
 
-signup.addEventListener('click',(e) => {
-	var email = document.getElementById('email').value;
-	var username=document.getElementById('username').value;
-	var password=document.getElementById('password').value;
-	createUserWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
-		//signed in
-		const user = userCredential.user;
-			
-		set(ref(database, 'users/' + user.uid),{
-			username: username,
-			email: email,
-		})
-		
-		alert('User Registered!');
-		window.location.href = "./homepage.html";
-	})
-	.catch((error)=> {
-		const errorCode=error.code;
-		const errorMessage=error.message;
-		alert(errorMessage);
-	})
-});
+  document.getElementById('signup').addEventListener('click', (e) => {
+    var email = document.getElementById('email').value;
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        set(ref(database, 'users/' + user.uid), {
+          username: username,
+          email: email,
+        })
+        .then(() => {
+          alert('User Registered!');
+          window.location.href = "./homepage.html";
+        })
+        .catch((error) => {
+          console.error("Error writing to database: ", error);
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+  });
 
-login.addEventListener('click',(e) => {
-	var email = document.getElementById('logemail').value;
-	var password=document.getElementById('logpassword').value;
-	signInWithEmailAndPassword(auth, email, password)
-  	.then((userCredential) => {
-    	// Signed in 
-    	const user = userCredential.user;
-	const dt= new Date();
-		update(ref(database, 'users/' + user.uid),{
-			LastLoginDate: dt
-		})
-		
-		alert('User Logged In!');
-		window.location.href = "./homepage.html";
-  	})
-  	.catch((error) => {
-    	const errorCode = error.code;
-    	const errorMessage = error.message;
-	alert(errorMessage);
-  	});
-});
-	
-const user = auth.currentUser;
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/auth.user
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
+  document.getElementById('login').addEventListener('click', (e) => {
+    var email = document.getElementById('logemail').value;
+    var password = document.getElementById('logpassword').value;
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const dt = new Date();
+        update(ref(database, 'users/' + user.uid), {
+          LastLoginDate: dt.toString()
+        })
+        .then(() => {
+          alert('User Logged In!');
+          window.location.href = "./homepage.html";
+        })
+        .catch((error) => {
+          console.error("Error updating login date: ", error);
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      // User is signed in, you can handle the authenticated user here
+    } else {
+      // User is signed out
+    }
+  });
 </script>
+
 <script>
+  const container = document.getElementById('container');
+  const registerBtn = document.getElementById('register');
+  const loginBtn = document.getElementById('log');
 
-const container = document.getElementById('container');
-const registerBtn = document.getElementById('register');
-const loginBtn = document.getElementById('log');
-
-registerBtn.addEventListener('click', () => {
+  registerBtn.addEventListener('click', () => {
     container.classList.add("active");
-});
+  });
 
-loginBtn.addEventListener('click', () => {
+  loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
-});
+  });
 </script>
 </body>
 </html>
