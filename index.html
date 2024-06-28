@@ -23,6 +23,8 @@
             <input id="email" type="email" placeholder="Email">
             <input id="username" type="text" placeholder="Username">
             <input id="password" type="password" placeholder="Password">
+            <input id="fullName" type="text" placeholder="Full Name">
+            <input id="role" type="text" placeholder="Role"> <!-- New input for role -->
             <input id="signup" type="submit" style="background-color: #512da8; color: white" value="Register">
         </div>
     </div>
@@ -60,8 +62,8 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
@@ -78,23 +80,36 @@
   const auth = getAuth();
 
   document.getElementById('signup').addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default form submission
     var email = document.getElementById('email').value;
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
+    var fullName = document.getElementById('fullName').value;
+    var role = document.getElementById('role').value;
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        set(ref(database, 'users/' + user.uid), {
+        const userId = user.uid;
+
+        // Structure the user data including profile information
+        const userData = {
           username: username,
           email: email,
-        })
-        .then(() => {
-          alert('User Registered!');
-          window.location.href = "./homepage.html";
-        })
-        .catch((error) => {
-          console.error("Error writing to database: ", error);
-        });
+          profile: {
+            firstName: fullName.split(' ')[0], // Assuming first part is first name
+            lastName: fullName.split(' ')[1] || '', // Second part is last name, if available
+            role: role
+          },
+          lastLoginDate: new Date().toISOString() // Current date in ISO format
+        };
+
+        // Set user data in Firebase under 'users/${userId}'
+        return set(ref(database, `users/${userId}`), userData);
+      })
+      .then(() => {
+        alert('User Registered!');
+        window.location.href = "./homepage.html";
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -103,36 +118,28 @@
   });
 
   document.getElementById('login').addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default form submission
     var email = document.getElementById('logemail').value;
     var password = document.getElementById('logpassword').value;
+
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const dt = new Date();
-        update(ref(database, 'users/' + user.uid), {
-          LastLoginDate: dt.toString()
-        })
-        .then(() => {
-          alert('User Logged In!');
-          window.location.href = "./homepage.html";
-        })
-        .catch((error) => {
-          console.error("Error updating login date: ", error);
+        const userId = user.uid;
+
+        // Update last login date in Firebase under 'users/${userId}'
+        return set(ref(database, `users/${userId}`), {
+          lastLoginDate: new Date().toISOString()
         });
+      })
+      .then(() => {
+        alert('User Logged In!');
+        window.location.href = "./homepage.html";
       })
       .catch((error) => {
         const errorMessage = error.message;
         alert(errorMessage);
       });
-  });
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      // User is signed in, you can handle the authenticated user here
-    } else {
-      // User is signed out
-    }
   });
 </script>
 
