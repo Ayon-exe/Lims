@@ -7,6 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="indexstyle.css">
+    <style>
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .radio-group label {
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
 <div class="container" id="container">
@@ -24,12 +36,12 @@
             <input id="username" type="text" placeholder="Username">
             <input id="password" type="password" placeholder="Password">
             <input id="fullName" type="text" placeholder="Full Name">
-        	<div class="radio-group">
-                    <input type="radio" id="Auditor" name="role" value="Auditor">
-                    <label for="Auditor">Auditor</label>
-                    <input type="radio" id="Employee" name="role" value="Employee" checked>
-                    <label for="Employee">Employee</label>
-        	</div>
+            <div class="radio-group">
+                <input type="radio" id="Auditor" name="role" value="Auditor">
+                <label for="Auditor">Auditor</label>
+                <input type="radio" id="Employee" name="role" value="Employee" checked>
+                <label for="Employee">Employee</label>
+            </div>
             <input id="signup" type="submit" style="background-color: #512da8; color: white" value="Register">
         </div>
     </div>
@@ -67,8 +79,8 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
@@ -90,7 +102,7 @@
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     var fullName = document.getElementById('fullName').value;
-    var role = document.getElementById('role').value;
+    var role = document.querySelector('input[name="role"]:checked').value; // Correct way to get selected radio button value
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -132,7 +144,7 @@
         const userId = user.uid;
 
         // Update last login date in Firebase under 'users/${userId}'
-        return set(ref(database, `users/${userId}`), {
+        return update(ref(database, `users/${userId}`), {
           lastLoginDate: new Date().toISOString()
         });
       })
@@ -144,6 +156,15 @@
         const errorMessage = error.message;
         alert(errorMessage);
       });
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      // User is signed in, you can handle the authenticated user here
+    } else {
+      // User is signed out
+    }
   });
 </script>
 
