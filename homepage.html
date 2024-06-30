@@ -253,7 +253,7 @@
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in
-        fetchUserProfile();
+        fetchUserProfile(user);
     } else {
         // User is signed out
         const profileDetails = document.getElementById('profile-details');
@@ -264,30 +264,27 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // Function to fetch and display user profile information
-function fetchUserProfile() {
+function fetchUserProfile(user) {
     const profileDetails = document.getElementById('profile-details');
     const userFacility = document.getElementById('user-facility');
-    const user = auth.currentUser;
 
-    if (user) {
-        // Fetch user data from Firebase
-        const userRef = ref(database, 'users/' + user.uid);
-        onValue(userRef, (snapshot) => {
-            const userData = snapshot.val();
-            if (userData) {
-                profileDetails.innerHTML = `
-                    <p><strong>Email:</strong> ${userData.email}</p>
-                    <p><strong>Username:</strong> ${userData.username}</p>
-                    <!-- Add more fields as needed -->
-                `;
-                // Display user's facility
-                userFacility.textContent = `Facility: ${userData.facility}`;
-            } else {
-                profileDetails.innerHTML = `<p>No profile data found.</p>`;
-                userFacility.textContent = `Facility: Not specified`;
-            }
-        });
-    }
+    // Fetch user data from Firebase
+    const userRef = ref(database, 'users/' + user.uid);
+    onValue(userRef, (snapshot) => {
+        const userData = snapshot.val();
+        if (userData) {
+            profileDetails.innerHTML = `
+                <p><strong>Email:</strong> ${userData.email}</p>
+                <p><strong>Username:</strong> ${userData.username}</p>
+                <!-- Add more fields as needed -->
+            `;
+            // Display user's facility
+            userFacility.textContent = `Facility: ${userData.facility}`;
+        } else {
+            profileDetails.innerHTML = `<p>No profile data found.</p>`;
+            userFacility.textContent = `Facility: Not specified`;
+        }
+    });
 }
 // Example: Adding edit profile functionality (you can expand this as needed)
 document.getElementById('edit-profile-btn').addEventListener('click', () => {
