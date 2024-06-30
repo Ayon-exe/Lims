@@ -190,21 +190,32 @@
         const auth = getAuth();
 
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
+    const sections = document.querySelectorAll('.section');
 
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetSectionId = e.target.getAttribute('href').substring(1);
-                    sections.forEach(section => {
-                        if (section.id === targetSectionId) {
-                            section.classList.add('active');
-                        } else {
-                            section.classList.remove('active');
-                        }
-                    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetSectionId = e.target.getAttribute('href').substring(1);
+
+            // Smooth scroll to target section
+            const targetSection = document.getElementById(targetSectionId);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
                 });
+            }
+
+            // Activate navigation links based on clicked link
+            sections.forEach(section => {
+                if (section.id === targetSectionId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
             });
+        });
+    });
+});
 
             // Fetch data from Firebase
             fetchSamples();
