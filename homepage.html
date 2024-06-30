@@ -55,15 +55,15 @@
             <h2>Select Testing Module</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="https://bio.unc.edu/wp-content/uploads/sites/353/2019/09/colourful-test-tubes.jpg" alt="Service 1"> <!-- Replace with your image -->
+                    <img src="https://bio.unc.edu/wp-content/uploads/sites/353/2019/09/colourful-test-tubes.jpg" alt="Service 1" href="#inventory-section"> <!-- Replace with your image -->
                     <h3>Biochemical Tests</h3>
                 </div>
                 <div class="col-md-4">
-                    <img src="https://portal.geochemcpslims.com/public/images/media/service/service-analytical.jpg" alt="Service 2"> <!-- Replace with your image -->
+                    <img src="https://portal.geochemcpslims.com/public/images/media/service/service-analytical.jpg" alt="Service 2" href="#inventory-section"> <!-- Replace with your image -->
                     <h3>Analytical Tests</h3>
                 </div>
                 <div class="col-md-4">
-                    <img src="https://cultivatorphytolab.com/wp-content/uploads/2023/07/colonies-bacteria-gram-negative-bacilli-gram-negative-cocco-bacilli-1-1080x675.jpg" alt="Service 3"> <!-- Replace with your image -->
+                    <img src="https://cultivatorphytolab.com/wp-content/uploads/2023/07/colonies-bacteria-gram-negative-bacilli-gram-negative-cocco-bacilli-1-1080x675.jpg" alt="Service 3"href="#inventory-section"> <!-- Replace with your image -->
                     <h3>Microbial Tests</h3>
                 </div>
             </div>
@@ -333,7 +333,7 @@ document.getElementById('edit-profile-btn').addEventListener('click', () => {
         document.getElementById('logout-link').addEventListener('click', function(event) {
         event.preventDefault();
         // Perform logout actions here (e.g., Firebase sign out)
-        firebase.auth().signOut().then(() => {
+        auth.signOut().then(() => {
             // Redirect to the logout page
             window.location.href = './index.html';
         }).catch((error) => {
