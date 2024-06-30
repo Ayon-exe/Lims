@@ -1,6 +1,7 @@
 body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
         }
         .main-content {
             padding: 20px;
@@ -16,6 +17,9 @@ body {
             border-collapse: collapse;
             margin-top: 20px;
         }
+        table, th, td {
+            border: 1px solid black;
+        }
         th, td {
             padding: 10px;
             text-align: left;
@@ -27,35 +31,36 @@ body {
             border: 1px solid #888;
             width: 80%;
         }
-        .navbar-brand img {
-            max-width: 150px;
-        }
-        .custom-navbar {
-            background-color: #343a40;
-        }
-        .navbar-nav .nav-link {
-            color: #ffffff !important;
-            margin-right: 15px;
-        }
-        .navbar-nav .nav-link:hover {
-            color: #d1d1d1 !important;
-        }
-        .header-section {
+        
+        .header {
+            background-image: url('https://st4.depositphotos.com/27893600/39296/v/450/depositphotos_392966258-stock-illustration-nature-pharmacy-herbal-medicine-logo.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            color: black;
             text-align: center;
-            padding: 50px;
-            background-color: #007bff;
-            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .header-section h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.5em;
+        }
+        .about, .services, .contact {
+            padding: 60px 0;
+        }
+        .about img, .services img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
         .footer {
-            background-color: #343a40;
-            color: white;
+            background-color: #2c3e50;
+            color: #ecf0f1;
             padding: 20px 0;
             text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
         }
