@@ -125,7 +125,10 @@
       })
       .then(() => {
         alert('User Registered!');
-        window.location.href = "./homepage.html";
+          if (role=="Auditor")
+              window.location.href = "./auditor.html";
+          else
+              window.location.href = "./homepage.html";
       })
       .catch((error) => {
         const errorMessage = error.message;
