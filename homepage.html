@@ -46,67 +46,29 @@
             <header id="home" class="header">
         <h1>Welcome to PharmaCo</h1>
         <p>Your Health, Our Priority</p>
+        <p>FACILITY OF USER()</p>
     </header>
-
-    <!-- About Us Section -->
-    <section id="about" class="about container text-center">
-        <h2>About Us</h2>
-        <p>PharmaCo is dedicated to providing the best pharmaceutical products to ensure your health and well-being.</p>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="https://cdn.dribbble.com/users/7328919/screenshots/17266863/media/4d5a78f888f034214638a258c8929e5f.jpg?resize=400x300&vertical=center" alt="About PharmaCo"> <!-- Replace with your image -->
-            </div>
-            <div class="col-md-6">
-                <p>With over 20 years of experience in the industry, we are committed to innovation, quality, and excellence.</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Services Section -->
     <section id="services" class="services bg-light text-center">
         <div class="container">
-            <h2>Our Services</h2>
-            <p>We offer a wide range of pharmaceutical services to meet your needs.</p>
+            <h2>Select Testing Module</h2>
             <div class="row">
                 <div class="col-md-4">
                     <img src="https://cdn.dribbble.com/users/7328919/screenshots/17266863/media/4d5a78f888f034214638a258c8929e5f.jpg?resize=400x300&vertical=center" alt="Service 1"> <!-- Replace with your image -->
-                    <h3>Research & Development</h3>
-                    <p>Innovative solutions for the healthcare industry.</p>
+                    <h3>Biochemical Tests</h3>
                 </div>
                 <div class="col-md-4">
                     <img src="https://cdn.dribbble.com/users/7328919/screenshots/17266863/media/4d5a78f888f034214638a258c8929e5f.jpg?resize=400x300&vertical=center" alt="Service 2"> <!-- Replace with your image -->
-                    <h3>Manufacturing</h3>
-                    <p>State-of-the-art manufacturing facilities.</p>
+                    <h3>Analytical Tests</h3>
                 </div>
                 <div class="col-md-4">
                     <img src="https://cdn.dribbble.com/users/7328919/screenshots/17266863/media/4d5a78f888f034214638a258c8929e5f.jpg?resize=400x300&vertical=center" alt="Service 3"> <!-- Replace with your image -->
-                    <h3>Distribution</h3>
-                    <p>Efficient and reliable distribution channels.</p>
+                    <h3>Microbial Tests</h3>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact container text-center">
-        <h2>Contact Us</h2>
-        <p>We'd love to hear from you! Reach out to us with any questions or inquiries.</p>
-        <form class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </div>
-        </form>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 PharmaCo. All Rights Reserved.</p>
@@ -130,7 +92,6 @@
                         <th>Received Date</th>
                         <th>Processed Date</th>
                         <th>Notes</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="sample-list">
@@ -148,7 +109,6 @@
                         <th>Name</th>
                         <th>Quantity</th>
                         <th>Location</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="inventory-list">
@@ -261,7 +221,7 @@
                         <td>${sample.receivedDate}</td>
                         <td>${sample.processedDate}</td>
                         <td>${sample.notes}</td>
-                        <td><button class="delete-btn btn btn-danger">Delete</button></td>
+
                     `;
                     sampleList.appendChild(row);
                 });
@@ -282,7 +242,6 @@
                         <td>${item.name}</td>
                         <td>${item.quantity}</td>
                         <td>${item.location}</td>
-                        <td><button class="delete-btn btn btn-danger">Delete</button></td>
                     `;
                     inventoryList.appendChild(row);
                 });
