@@ -55,17 +55,14 @@
             <h2>Select Testing Module</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <a href="#samples-section">
                     <img src="https://bio.unc.edu/wp-content/uploads/sites/353/2019/09/colourful-test-tubes.jpg" alt="Service 1"><!-- Replace with your image -->
                     <h3>Biochemical Tests</h3><a class="nav-link" href="#profile-section">Profile</a>
                 </div>
                 <div class="col-md-4">
-                    <a href="#samples-section">
                     <img src="https://portal.geochemcpslims.com/public/images/media/service/service-analytical.jpg" alt="Service 2"><!-- Replace with your image -->
                     <h3>Analytical Tests</h3>
                 </div>
                 <div class="col-md-4">
-                    <a href="#samples-section">
                     <img src="https://cultivatorphytolab.com/wp-content/uploads/2023/07/colonies-bacteria-gram-negative-bacilli-gram-negative-cocco-bacilli-1-1080x675.jpg" alt="Service 3"><!-- Replace with your image -->
                     <h3>Microbial Tests</h3>
                 </div>
@@ -189,33 +186,22 @@
         const database = getDatabase(app);
         const auth = getAuth();
 
-        document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section');
+document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
 
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetSectionId = e.target.getAttribute('href').substring(1);
-
-            // Smooth scroll to target section
-            const targetSection = document.getElementById(targetSectionId);
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth'
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetSectionId = e.target.getAttribute('href').substring(1);
+                    sections.forEach(section => {
+                        if (section.id === targetSectionId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
                 });
-            }
-
-            // Activate navigation links based on clicked link
-            sections.forEach(section => {
-                if (section.id === targetSectionId) {
-                    section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
-                }
             });
-        });
-    });
-});
 
             // Fetch data from Firebase
             fetchSamples();
