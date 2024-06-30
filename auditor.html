@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIMS Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="homepage.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">LIMS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#dashboard-section">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#samples-section">Samples</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#inventory-section">Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#profile-section">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div id="dashboard-section" class="section active">
+            <header id="home" class="header">
+        <h1>Welcome to PharmaCo</h1>
+        <p>Your Health, Our Priority</p>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about" class="about container text-center">
+        <h2>About Us</h2>
+        <p>PharmaCo is dedicated to providing the best pharmaceutical products to ensure your health and well-being.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://cdn.dribbble.com/users/7328919/screenshots/17266863/media/4d5a78f888f034214638a258c8929e5f.jpg?resize=400x300&vertical=center" alt="About PharmaCo"> <!-- Replace with your image -->
+            </div>
+            <div class="col-md-6">
+                <p>With over 20 years of experience in the industry, we are committed to innovation, quality, and excellence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services bg-light text-center">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p>We offer a wide range of pharmaceutical services to meet your needs.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://cdn.dribbble.com/users/7328919/screenshots/17266863/media/4d5a78f888f034214638a258c8929e5f.jpg?resize=400x300&vertical=center" alt="Service 1"> <!-- Replace with your image -->
+                    <h3>Research & Development</h3>
+                    <p>Innovative solutions for the healthcare industry.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://cdn.dribbble.com/users/7328919/screenshots/17266863/media/4d5a78f888f034214638a258c8929e5f.jpg?resize=400x300&vertical=center" alt="Service 2"> <!-- Replace with your image -->
+                    <h3>Manufacturing</h3>
+                    <p>State-of-the-art manufacturing facilities.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://cdn.dribbble.com/users/7328919/screenshots/17266863/media/4d5a78f888f034214638a258c8929e5f.jpg?resize=400x300&vertical=center" alt="Service 3"> <!-- Replace with your image -->
+                    <h3>Distribution</h3>
+                    <p>Efficient and reliable distribution channels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact container text-center">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Reach out to us with any questions or inquiries.</p>
+        <form class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 PharmaCo. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        </div>
+        
+        <div id="samples-section" class="section">
+            <h1>Sample Management</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sample ID</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Received Date</th>
+                        <th>Processed Date</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="sample-list">
+                    <!-- Sample rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="inventory-section" class="section">
+            <h1>Inventory Management</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item ID</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-list">
+                    <!-- Inventory rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Profile Section -->
+<div id="profile-section" class="section">
+    <div class="container">
+        <h1>User Profile</h1>
+        <div id="profile-details">
+            <!-- Profile information will be populated here -->
+        </div>
+        <button id="edit-profile-btn" class="btn btn-primary">Edit Profile</button>
+    </div>
+</div>
+
+    </div>
+    <!-- Bootstrap JS and Firebase SDK -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+    <script type="module">
+        // Firebase configuration
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
+            authDomain: "lims-48c6d.firebaseapp.com",
+            databaseURL: "https://lims-48c6d-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "lims-48c6d",
+            storageBucket: "lims-48c6d.appspot.com",
+            messagingSenderId: "421362597347",
+            appId: "1:421362597347:web:fd370a3e5540da7b5f34d6"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetSectionId = e.target.getAttribute('href').substring(1);
+                    sections.forEach(section => {
+                        if (section.id === targetSectionId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Fetch data from Firebase
+            fetchSamples();
+            fetchInventory();
+        });
+
+        // Fetch samples from Firebase and display in table
+        function fetchSamples() {
+            const samplesRef = ref(database, 'samples/');
+            onValue(samplesRef, (snapshot) => {
+                const sampleList = document.getElementById('sample-list');
+                sampleList.innerHTML = ''; // Clear the current list
+                snapshot.forEach((childSnapshot) => {
+                    const sample = childSnapshot.val();
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${sample.sampleId}</td>
+                        <td>${sample.name}</td>
+                        <td>${sample.status}</td>
+                        <td>${sample.receivedDate}</td>
+                        <td>${sample.processedDate}</td>
+                        <td>${sample.notes}</td>
+                        <td><button class="delete-btn btn btn-danger">Delete</button></td>
+                    `;
+                    sampleList.appendChild(row);
+                });
+            });
+        }
+
+        // Fetch inventory from Firebase and display in table
+        function fetchInventory() {
+            const inventoryRef = ref(database, 'inventory/');
+            onValue(inventoryRef, (snapshot) => {
+                const inventoryList = document.getElementById('inventory-list');
+                inventoryList.innerHTML = ''; // Clear the current list
+                snapshot.forEach((childSnapshot) => {
+                    const item = childSnapshot.val();
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.itemId}</td>
+                        <td>${item.name}</td>
+                        <td>${item.quantity}</td>
+                        <td>${item.location}</td>
+                        <td><button class="delete-btn btn btn-danger">Delete</button></td>
+                    `;
+                    inventoryList.appendChild(row);
+                });
+            });
+        }
+// Function to fetch and display user profile information
+function fetchUserProfile() {
+    const profileDetails = document.getElementById('profile-details');
+    const user = auth.currentUser;
+
+    if (user) {
+        // Fetch user data from Firebase
+        const userRef = ref(database, 'users/' + user.uid);
+        onValue(userRef, (snapshot) => {
+            const userData = snapshot.val();
+            if (userData) {
+                profileDetails.innerHTML = `
+                    <p><strong>Email:</strong> ${userData.email}</p>
+                    <p><strong>Username:</strong> ${userData.username}</p>
+                    <!-- Add more fields as needed -->
+                `;
+            } else {
+                profileDetails.innerHTML = `<p>No profile data found.</p>`;
+            }
+        });
+    } else {
+        profileDetails.innerHTML = `<p>User not logged in.</p>`;
+    }
+}
+
+// Call fetchUserProfile when the profile section is loaded or when user logs in
+document.addEventListener('DOMContentLoaded', () => {
+    fetchUserProfile();
+});
+
+// Example: Adding edit profile functionality (you can expand this as needed)
+document.getElementById('edit-profile-btn').addEventListener('click', () => {
+    const user = auth.currentUser;
+    if (user) {
+        // Redirect or show edit form based on your application flow
+        console.log('Redirect to edit profile page or show edit form');
+    } else {
+        console.log('User not logged in, cannot edit profile.');
+    }
+});
+
+    </script>
+</body>
+</html>
