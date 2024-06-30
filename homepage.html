@@ -34,8 +34,8 @@
                     <a class="nav-link" href="#profile-section">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Logout</a>
-                </li>
+                <a class="nav-link" id="logout-link" href="#">Logout</a>
+            </li>
             </ul>
         </div>
     </nav>
@@ -362,6 +362,16 @@ document.getElementById('edit-profile-btn').addEventListener('click', () => {
                 });
             });
         }
+        document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        // Perform logout actions here (e.g., Firebase sign out)
+        firebase.auth().signOut().then(() => {
+            // Redirect to the logout page
+            window.location.href = './index.html';
+        }).catch((error) => {
+            console.error('Error signing out: ', error);
+        });
+    });
     </script>
 </body>
 </html>
