@@ -276,10 +276,11 @@ function fetchUserProfile(user) {
             profileDetails.innerHTML = `
                 <p><strong>Email:</strong> ${userData.email}</p>
                 <p><strong>Username:</strong> ${userData.username}</p>
+                <p><strong>Facility:</strong> ${userData.profile.facility}</p>
                 <!-- Add more fields as needed -->
             `;
             // Display user's facility
-            userFacility.textContent = `Facility: ${userData.facility}`;
+            userFacility.textContent = `Facility: ${userData.profile.facility}`;
         } else {
             profileDetails.innerHTML = `<p>No profile data found.</p>`;
             userFacility.textContent = `Facility: Not specified`;
