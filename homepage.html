@@ -46,7 +46,7 @@
             <header id="home" class="header">
         <h1>Welcome to PharmaCo</h1>
         <p>Your Health, Our Priority</p>
-        <p>FACILITY OF USER()</p>
+        <p id="user-facility">Facility: </p>
     </header>
 
     <!-- Services Section -->
@@ -121,7 +121,7 @@
     <div class="container">
         <h1>User Profile</h1>
         <div id="profile-details">
-            <!-- Profile information will be populated here -->
+            <p id="'profile-details'"></p>
         </div>
         <button id="edit-profile-btn" class="btn btn-primary">Edit Profile</button>
     </div>
@@ -248,8 +248,10 @@
             });
         }
 // Function to fetch and display user profile information
+// Function to fetch and display user profile information
 function fetchUserProfile() {
     const profileDetails = document.getElementById('profile-details');
+    const userFacility = document.getElementById('user-facility');
     const user = auth.currentUser;
 
     if (user) {
@@ -263,12 +265,16 @@ function fetchUserProfile() {
                     <p><strong>Username:</strong> ${userData.username}</p>
                     <!-- Add more fields as needed -->
                 `;
+                // Display user's facility
+                userFacility.textContent = `Facility: ${userData.facility}`;
             } else {
                 profileDetails.innerHTML = `<p>No profile data found.</p>`;
+                userFacility.textContent = `Facility: Not specified`;
             }
         });
     } else {
         profileDetails.innerHTML = `<p>User not logged in.</p>`;
+        userFacility.textContent = `Facility: Not logged in`;
     }
 }
 
