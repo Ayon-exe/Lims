@@ -24,7 +24,8 @@
             <input id="username" type="text" placeholder="Username">
             <input id="password" type="password" placeholder="Password">
             <input id="fullName" type="text" placeholder="Full Name">
-            <input id="role" type="text" placeholder="Role"> <!-- New input for role -->
+            <input type="radio" id="Auditor" name="role" value="Auditor"><label for="Auditor">Auditor</label>
+			<input type="radio" id="Employee" name="role" value="Employee"><label for="Employee">Employee</label>
             <input id="signup" type="submit" style="background-color: #512da8; color: white" value="Register">
         </div>
     </div>
@@ -97,14 +98,13 @@
           username: username,
           email: email,
           profile: {
-            firstName: fullName.split(' ')[0], // Assuming first part is first name
-            lastName: fullName.split(' ')[1] || '', // Second part is last name, if available
+            firstName: fullName.split(' ')[0],
+            lastName: fullName.split(' ')[1] || '',
             role: role
           },
-          lastLoginDate: new Date().toISOString() // Current date in ISO format
+          lastLoginDate: new Date().toISOString()
         };
 
-        // Set user data in Firebase under 'users/${userId}'
         return set(ref(database, `users/${userId}`), userData);
       })
       .then(() => {
