@@ -190,3 +190,13 @@ body{
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+.radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .radio-group label {
+            margin-right: 20px;
+        }
