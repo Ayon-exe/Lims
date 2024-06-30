@@ -7,6 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="indexstyle.css">
+    <style>
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .radio-group label {
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
 <div class="container" id="container">
@@ -61,7 +73,7 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getDatabase, set, ref, update, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
   const firebaseConfig = {
@@ -133,11 +145,22 @@
         // Update last login date in Firebase under 'users/${userId}'
         return update(ref(database, `users/${userId}`), {
           lastLoginDate: new Date().toISOString()
+        }).then(() => {
+          // Retrieve user data to determine role
+          return get(child(ref(database), `users/${userId}`));
+        }).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const userRole = userData.profile.role;
+            if (userRole == "Auditor") {
+              window.location.href = "./auditor.html";
+            } else {
+              window.location.href = "./homepage.html";
+            }
+          } else {
+            alert("No user data found");
+          }
         });
-      })
-      .then(() => {
-        alert('User Logged In!');
-        window.location.href = "./homepage.html";
       })
       .catch((error) => {
         const errorMessage = error.message;
