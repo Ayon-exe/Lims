@@ -250,7 +250,19 @@
                 });
             });
         }
-// Function to fetch and display user profile information
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in
+        fetchUserProfile();
+    } else {
+        // User is signed out
+        const profileDetails = document.getElementById('profile-details');
+        const userFacility = document.getElementById('user-facility');
+        profileDetails.innerHTML = `<p>User not logged in.</p>`;
+        userFacility.textContent = `Facility: Not logged in`;
+    }
+});
+
 // Function to fetch and display user profile information
 function fetchUserProfile() {
     const profileDetails = document.getElementById('profile-details');
@@ -275,17 +287,8 @@ function fetchUserProfile() {
                 userFacility.textContent = `Facility: Not specified`;
             }
         });
-    } else {
-        profileDetails.innerHTML = `<p>User not logged in.</p>`;
-        userFacility.textContent = `Facility: Not logged in`;
     }
 }
-
-// Call fetchUserProfile when the profile section is loaded or when user logs in
-document.addEventListener('DOMContentLoaded', () => {
-    fetchUserProfile();
-});
-
 // Example: Adding edit profile functionality (you can expand this as needed)
 document.getElementById('edit-profile-btn').addEventListener('click', () => {
     const user = auth.currentUser;
