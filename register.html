@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lims</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="indexstyle.css">
+    <style>
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .radio-group label {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="form-container sign-up">
+        <div id="demo">
+            <h1>Create Account</h1>
+            <span>Use your email for registration</span>
+            <input id="email" type="email" placeholder="Email">
+            <input id="username" type="text" placeholder="Username">
+            <input id="password" type="password" placeholder="Password">
+            <input id="fullName" type="text" placeholder="Full Name">
+            <label for="facility">Choose a facility:</label>
+            <select name="facility" id="facility-select">
+              <option value="R&D">R&D</option>
+              <option value="QA/QC">QA/QC</option>
+              <option value="Manufacturing">Manufacturing</option>
+            </select>
+            <input id="signup" type="submit" style="background-color: #512da8; color: white" value="Register">
+        </div>
+    </div>
+</div>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getDatabase, set, ref, update, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
+    authDomain: "lims-48c6d.firebaseapp.com",
+    databaseURL: "https://lims-48c6d-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "lims-48c6d",
+    storageBucket: "lims-48c6d.appspot.com",
+    messagingSenderId: "421362597347",
+    appId: "1:421362597347:web:fd370a3e5540da7b5f34d6"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+
+  document.getElementById('signup').addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default form submission
+    var email = document.getElementById('email').value;
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var fullName = document.getElementById('fullName').value;
+    var role = document.querySelector('input[name="role"]:checked').value; // Correct way to get selected radio button value
+    var facility = document.getElementById('facility-select').value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const userId = user.uid;
+
+        // Structure the user data including profile information
+        const userData = {
+          username: username,
+          email: email,
+          profile: {
+            firstName: fullName.split(' ')[0],
+            lastName: fullName.split(' ')[1] || '',
+            role: role,
+            facility: facility
+          },
+          lastLoginDate: new Date().toISOString()
+        };
+
+        return set(ref(database, `users/${userId}`), userData);
+      })
+      .then(() => {
+        alert('User Registered!');
+          window.location.href = "./auditor.html";
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      // User is signed in, you can handle the authenticated user here
+    } else {
+      // User is signed out
+    }
+  });
+</script>
+</body>
+</html>
