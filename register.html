@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class="container" id="container">
-    <div class="form-container sign-up">
+    <div class="form-container sign-in">
         <div id="demo">
             <h1>Create Account</h1>
             <span>Use your email for registration</span>
@@ -30,12 +30,6 @@
             <input id="username" type="text" placeholder="Username">
             <input id="password" type="password" placeholder="Password">
             <input id="fullName" type="text" placeholder="Full Name">
-            <label for="facility">Choose a facility:</label>
-            <select name="facility" id="facility-select">
-              <option value="R&D">R&D</option>
-              <option value="QA/QC">QA/QC</option>
-              <option value="Manufacturing">Manufacturing</option>
-            </select>
             <input id="signup" type="submit" style="background-color: #512da8; color: white" value="Register">
         </div>
     </div>
@@ -66,8 +60,6 @@
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     var fullName = document.getElementById('fullName').value;
-    var role = document.querySelector('input[name="role"]:checked').value; // Correct way to get selected radio button value
-    var facility = document.getElementById('facility-select').value;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
