@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecule Audit</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,6 +68,20 @@
         .radio-buttons input[type="radio"] {
             margin: 10px;
         }
+        .proceed-button {
+            margin-top: 20px;
+        }
+        .details-container {
+            display: none;
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .details-container h2 {
+            margin-bottom: 20px;
+        }
     </style>
     <script type="module">
         // Import the functions you need from the SDKs you need
@@ -78,13 +90,13 @@
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
-            authDomain: "lims-48c6d.firebaseapp.com",
-            databaseURL: "https://lims-48c6d-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "lims-48c6d",
-            storageBucket: "lims-48c6d.appspot.com",
-            messagingSenderId: "421362597347",
-            appId: "1:421362597347:web:fd370a3e5540da7b5f34d6"
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
         };
 
         // Initialize Firebase
@@ -102,11 +114,28 @@
                     const radioButton = document.createElement('input');
                     radioButton.type = 'radio';
                     radioButton.name = 'batch';
-                    radioButton.value = batch;
+                    radioButton.value = childSnapshot.key;
                     batchContainer.appendChild(radioButton);
-                    batchContainer.appendChild(document.createTextNode(batch));
+                    batchContainer.appendChild(document.createTextNode(childSnapshot.key));
                     batchContainer.appendChild(document.createElement('br'));
                 });
+            });
+        }
+
+        // Function to display batch details
+        function displayBatchDetails(molecule, batch) {
+            const detailsContainer = document.getElementById('detailsContainer');
+            const detailsRef = ref(database, 'molecules/' + molecule + '/' + batch);
+            onValue(detailsRef, (snapshot) => {
+                const data = snapshot.val();
+                detailsContainer.innerHTML = `
+                    <h2>Batch Details</h2>
+                    <p><strong>Batch Number:</strong> ${data.batchNumber}</p>
+                    <p><strong>Status:</strong> ${data.status}</p>
+                    <p><strong>Production Date:</strong> ${data.productionDate}</p>
+                    <p><strong>Notes:</strong> ${data.notes}</p>
+                `;
+                detailsContainer.style.display = 'block';
             });
         }
 
@@ -116,6 +145,25 @@
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
                     loadBatches(button.textContent); // Load batches based on the button's text content
+                });
+            });
+
+            const proceedButton = document.getElementById('proceedButton');
+            proceedButton.addEventListener('click', () => {
+                const selectedBatch = document.querySelector('input[name="batch"]:checked');
+                if (selectedBatch) {
+                    const molecule = document.querySelector('.buttons button.active').textContent;
+                    displayBatchDetails(molecule, selectedBatch.value);
+                } else {
+                    alert('Please select a batch first.');
+                }
+            });
+
+            // Mark button as active when clicked
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
                 });
             });
         };
@@ -137,10 +185,15 @@
                 <h2>Batches</h2>
             </div>
         </div>
-       <div>
-            <button type="button" class="btn btn-primary">Proceed for revew</button>
-            <img src="https://bio.unc.edu/wp-content/uploads/sites/353/2019/09/colourful-test-tubes.jpg" height="100px" alt="Service 1"><!-- Replace with your image -->
-
+        <div class="proceed-button">
+            <button id="proceedButton">Proceed for Review</button>
+        </div>
+        <div class="details-container" id="detailsContainer">
+            <h2>Batch Details</h2>
+            <p><strong>Batch Number:</strong> </p>
+            <p><strong>Status:</strong> </p>
+            <p><strong>Production Date:</strong> </p>
+            <p><strong>Notes:</strong> </p>
         </div>
     </div>
 </body>
