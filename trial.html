@@ -70,9 +70,11 @@
         }
     </style>
     <script type="module">
+        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
 
+        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
             authDomain: "lims-48c6d.firebaseapp.com",
@@ -83,9 +85,11 @@
             appId: "1:421362597347:web:fd370a3e5540da7b5f34d6"
         };
 
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
+        // Function to load batches for a given molecule
         function loadBatches(molecule) {
             const batchContainer = document.getElementById('batchContainer');
             const batchesRef = ref(database, 'molecules/' + molecule);
@@ -104,11 +108,12 @@
             });
         }
 
+        // Set up event listeners for the buttons
         window.onload = function() {
             const buttons = document.querySelectorAll('.buttons button');
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
-                    loadBatches(button.textContent);
+                    loadBatches(button.textContent); // Load batches based on the button's text content
                 });
             });
         };
