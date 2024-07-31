@@ -69,47 +69,6 @@
             margin: 10px;
         }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
-    <script type="module">
-        // Firebase configuration
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-        // Your Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
-            authDomain: "lims-48c6d.firebaseapp.com",
-            databaseURL: "https://lims-48c6d-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "lims-48c6d",
-            storageBucket: "lims-48c6d.appspot.com",
-            messagingSenderId: "421362597347",
-            appId: "1:421362597347:web:fd370a3e5540da7b5f34d6"
-        };
-
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database(app);
-
-        function loadBatches() {
-            const batchContainer = document.getElementById('batchContainer');
-            database.ref('batches').once('value', function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    const batch = childSnapshot.val();
-                    const radioButton = document.createElement('input');
-                    radioButton.type = 'radio';
-                    radioButton.name = 'batch';
-                    radioButton.value = batch;
-                    batchContainer.appendChild(radioButton);
-                    batchContainer.appendChild(document.createTextNode(batch));
-                    batchContainer.appendChild(document.createElement('br'));
-                });
-            });
-        }
-
-        window.onload = function() {
-            loadBatches();
-        };
-    </script>
 </head>
 <body>
     <div class="container">
@@ -133,5 +92,46 @@
 
         </div>
     </div>
+<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+<script type="module">
+        // Firebase configuration
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-q0c86ThWaoePtmi9o0euID9Xu64WKsE",
+            authDomain: "lims-48c6d.firebaseapp.com",
+            databaseURL: "https://lims-48c6d-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "lims-48c6d",
+            storageBucket: "lims-48c6d.appspot.com",
+            messagingSenderId: "421362597347",
+            appId: "1:421362597347:web:fd370a3e5540da7b5f34d6"
+        };
+
+        // Initialize Firebase
+        const app =initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        function loadBatches() {
+            const batchContainer = document.getElementById('batchContainer');
+            database.ref('batches').once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    const batch = childSnapshot.val();
+                    const radioButton = document.createElement('input');
+                    radioButton.type = 'radio';
+                    radioButton.name = 'batch';
+                    radioButton.value = batch;
+                    batchContainer.appendChild(radioButton);
+                    batchContainer.appendChild(document.createTextNode(batch));
+                    batchContainer.appendChild(document.createElement('br'));
+                });
+            });
+        }
+
+        window.onload = function() {
+            loadBatches();
+        };
+    </script>
 </body>
 </html>
