@@ -115,8 +115,10 @@
 
         function loadBatches() {
             const batchContainer = document.getElementById('batchContainer');
-            database.ref('batches').once('value', function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
+            const batchesRef = ref(database, 'batches/');
+            onValue(batchesRef, (snapshot) => {
+                batchContainer.innerHTML = ''; // Clear the current content
+                snapshot.forEach((childSnapshot) => {
                     const batch = childSnapshot.val();
                     const radioButton = document.createElement('input');
                     radioButton.type = 'radio';
