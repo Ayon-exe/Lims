@@ -10,18 +10,18 @@
 </head>
 <body>
 <div class="container" id="container">
-    <div class="form-container sign-up">
-        <div id="demo">
-            <h1>Create Account</h1>
-            <span>Use your email for registration</span>
-            <input id="email" type="email" placeholder="Email">
-            <input id="username" type="text" placeholder="Username">
-            <input id="password" type="password" placeholder="Password">
-            <input id="fullName" type="text" placeholder="Full Name">
-            <input id="signup" type="submit" style="background-color: #512da8; color: white" value="Register">
+        <div class="form-container sign-up">
+            <div id="demo">
+                <h1>Create Account</h1>
+                <span>Use your email for registeration</span>
+                <input id="email" type="email" placeholder="Email">
+                <input id="username" type="text" placeholder="Username">
+                <input id="password" type="password" placeholder="Password">
+                <input id="fullName" type="text" placeholder="Full Name">
+                <input id="signup" type="submit" style="background-color: #512da8; color: white" value="Register">
+            </div>
         </div>
-    </div>
-    <div class="form-container sign-in">
+        <div class="form-container sign-in">
             <div id="demo">
                 <h1>Sign In</h1>
                 <span>Use your email password</span>
@@ -31,7 +31,6 @@
                 <input id="login" type="submit" style="background-color: #512da8;color: white" value="Login">
             </div>
         </div>
-    </div>
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
@@ -46,8 +45,7 @@
                 </div>
             </div>
         </div>
-</div>
-
+    </div>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getDatabase, set, ref, update, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
